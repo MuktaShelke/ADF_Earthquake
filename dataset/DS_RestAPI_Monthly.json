@@ -1,0 +1,12 @@
+{
+	"name": "DS_RestAPI_Monthly",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_RestAPI",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "RestResource",
+		"schema": []
+	}
+}

@@ -10,7 +10,10 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"folderPath": "EQ_input_data",
+				"folderPath": {
+					"value": "@concat('bronzelayer/',string(formatDateTime(utcNow(), 'yyyy-MM-dd')))",
+					"type": "Expression"
+				},
 				"fileSystem": "earthquakedata"
 			}
 		},

@@ -1,5 +1,5 @@
 {
-	"name": "pl_copyAPIResponse",
+	"name": "pl_copyDailyAPIResponse",
 	"properties": {
 		"description": "Copy API response in container",
 		"activities": [
@@ -42,7 +42,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"RelativeURL": {
-								"value": "@pipeline().parameters.baseUrl",
+								"value": "@pipeline().parameters.relativeUrl_daily",
 								"type": "Expression"
 							}
 						}
@@ -54,10 +54,59 @@
 						"type": "DatasetReference"
 					}
 				]
+			},
+			{
+				"name": "Copy data Monthly",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "RestSource",
+						"httpRequestTimeout": "00:01:40",
+						"requestInterval": "00.00:00:00.010",
+						"requestMethod": "GET",
+						"paginationRules": {
+							"supportRFC5988": "true"
+						}
+					},
+					"sink": {
+						"type": "JsonSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "JsonWriteSettings"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_RestAPI_Monthly",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_Json_APIresp",
+						"type": "DatasetReference"
+					}
+				]
 			}
 		],
 		"parameters": {
-			"baseUrl": {
+			"relativeUrl_daily": {
+				"type": "string"
+			},
+			"relativeUrl_monthly": {
 				"type": "string"
 			}
 		},
