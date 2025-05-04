@@ -1,0 +1,71 @@
+{
+	"name": "pl_copyAPIResponse",
+	"properties": {
+		"description": "Copy API response in container",
+		"activities": [
+			{
+				"name": "Copy data Daily",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "RestSource",
+						"httpRequestTimeout": "00:01:40",
+						"requestInterval": "00.00:00:00.010",
+						"requestMethod": "GET",
+						"paginationRules": {
+							"supportRFC5988": "true"
+						}
+					},
+					"sink": {
+						"type": "JsonSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "JsonWriteSettings"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_RestAPI",
+						"type": "DatasetReference",
+						"parameters": {
+							"RelativeURL": {
+								"value": "@pipeline().parameters.baseUrl",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_Json_APIresp",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"parameters": {
+			"baseUrl": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "EarthquakeProject"
+		},
+		"annotations": [],
+		"lastPublishTime": "2025-05-04T06:59:04Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

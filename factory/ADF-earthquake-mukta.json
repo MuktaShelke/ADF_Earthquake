@@ -1,0 +1,9 @@
+{
+	"name": "ADF-earthquake-mukta",
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "c01e99ed-20d7-4496-9d47-dfe6c1c88f54",
+		"tenantId": "fc8c872c-1d7d-48d7-af86-7f92fff1cc73"
+	}
+}
