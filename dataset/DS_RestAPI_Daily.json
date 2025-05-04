@@ -1,5 +1,5 @@
 {
-	"name": "DS_RestAPI",
+	"name": "DS_RestAPI_Daily",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "ls_RestAPI",

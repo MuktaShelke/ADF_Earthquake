@@ -1,5 +1,5 @@
 {
-	"name": "DS_Json_APIresp_daily",
+	"name": "DS_Json_APIresp_Monthly",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "ls_storageData",
@@ -11,7 +11,7 @@
 			"location": {
 				"type": "AzureBlobFSLocation",
 				"folderPath": {
-					"value": "@concat('bronzelayer/daily/',string(formatDateTime(utcNow(), 'yyyy-MM-dd')))",
+					"value": "@concat('bronzelayer/Monthly/',string(formatDateTime(utcNow(), 'yyyy-MM-dd')))",
 					"type": "Expression"
 				},
 				"fileSystem": "earthquakedata"

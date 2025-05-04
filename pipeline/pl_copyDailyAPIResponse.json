@@ -38,7 +38,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "DS_RestAPI",
+						"referenceName": "DS_RestAPI_Daily",
 						"type": "DatasetReference",
 						"parameters": {
 							"RelativeURL": {
@@ -50,7 +50,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "DS_Json_APIresp",
+						"referenceName": "DS_Json_APIresp_daily",
 						"type": "DatasetReference"
 					}
 				]
@@ -91,12 +91,18 @@
 				"inputs": [
 					{
 						"referenceName": "DS_RestAPI_Monthly",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"relative_url": {
+								"value": "@pipeline().parameters.relativeUrl_monthly",
+								"type": "Expression"
+							}
+						}
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "DS_Json_APIresp",
+						"referenceName": "DS_Json_APIresp_Monthly",
 						"type": "DatasetReference"
 					}
 				]
@@ -104,10 +110,12 @@
 		],
 		"parameters": {
 			"relativeUrl_daily": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "all_day.geojson"
 			},
 			"relativeUrl_monthly": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "all_month.geojson"
 			}
 		},
 		"folder": {
