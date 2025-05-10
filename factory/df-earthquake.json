@@ -1,0 +1,9 @@
+{
+	"name": "df-earthquake",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "a2bbca08-fdb7-49d7-bce4-c67f75303322",
+		"tenantId": "fc8c872c-1d7d-48d7-af86-7f92fff1cc73"
+	}
+}
